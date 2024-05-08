@@ -1,16 +1,26 @@
 import styled from "styled-components"
 import { SectionBaseStyle } from "../../styles"
+import { breakpoints } from "../../../../styles/global"
 
 export const SelectedDrinksContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   width: 40rem;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+    padding-top: 40px;
+  }
 `
 
 export const DetailsContainer = styled(SectionBaseStyle)`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: block;
+  }
 `
 
 export const ConfirmationSectionContainer = styled.section`
@@ -23,4 +33,5 @@ export const ConfirmationSectionContainer = styled.section`
     align-items: center;
     justify-content: space-between;
   }
+
 `

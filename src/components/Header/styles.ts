@@ -23,6 +23,10 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: space-between;
   }
+
+  @media (max-width: ${breakpoints.tablet}){
+    padding: 0 20px;
+  }
 `
 
 export const HeaderButtonsContainer = styled.div`

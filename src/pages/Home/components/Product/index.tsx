@@ -11,11 +11,11 @@ export const Product = ({ menu }: Props) => {
     return (
     <DrinkList>
         {menu.map((bebidas) => (
-                <DrinkCard 
-                    key={bebidas.id} 
-                    drinks={bebidas} 
-                />
-            ))}
+            <DrinkCard 
+                key={bebidas.id} 
+                drinks={bebidas} 
+            />
+        ))}
     </DrinkList>
     )
 }

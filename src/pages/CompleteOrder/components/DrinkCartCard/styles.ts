@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { breakpoints } from "../../../../styles/global"
 
 export const DrinkCartCardContainer = styled.div`
   width: 100%;
@@ -26,6 +27,15 @@ export const DrinkCartCardContainer = styled.div`
     align-self: flex-start;
     font-weight: 700;
     padding-left: 10px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: block;
+
+    >p {
+      padding: 20px 24px 20px 0px;
+      text-align: end;
+    }
   }
 `
 

@@ -1,4 +1,4 @@
-import { AddressFormContainer } from "./styles"
+import { AddressFormContainer, Row } from "./styles"
 import { useFormContext } from "react-hook-form"
 import { Input } from "../../../../components/Input"
 import { maskCEP } from "../../../../utils/mask/inputsMask"
@@ -17,51 +17,57 @@ export function AddressForm() {
   
   return (
     <AddressFormContainer>
-      <Input
-        placeholder="CEP"
-        type="tel"
-        className="cep"
-        {...register("cep")}
-        error={errors.cep?.message}
-        onChange={(event) => {
-          const {value} = event.target
-          event.target.value = maskCEP(value)
-        }}
-      />
-      <Input
-        placeholder="Rua"
-        className="street"
-        {...register("street")}
-        error={errors.street?.message}
-      />
-      <Input
-        placeholder="Número"
-        type="number"
-        {...register("number")}
-        error={errors.number?.message}
-      />
-      <Input
-        placeholder="Complemento"
-        className="complement"
-        {...register("complement")}
-        error={errors.complement?.message}
-        rightText="Opcional"
-      />
-      <Input
-        placeholder="Bairro"
-        {...register("district")}
-        error={errors.district?.message}
-      />
-      <Input
-        placeholder="Cidade"
-        {...register("city")}
-        error={errors.city?.message}
-      />
-      <Input 
-        placeholder="UF" 
-        {...register("uf")} 
-        error={errors.uf?.message} 
-      />
+      <Row>
+        <Input
+          placeholder="CEP"
+          type="tel"
+          className="cep"
+          {...register("cep")}
+          error={errors.cep?.message}
+          onChange={(event) => {
+            const {value} = event.target
+            event.target.value = maskCEP(value)
+          }}
+        />
+        <Input
+          placeholder="Rua"
+          className="street"
+          {...register("street")}
+          error={errors.street?.message}
+        />
+      </Row>
+      <Row>
+        <Input
+          placeholder="Número"
+          type="number"
+          {...register("number")}
+          error={errors.number?.message}
+        />
+        <Input
+          placeholder="Complemento"
+          className="complement"
+          {...register("complement")}
+          error={errors.complement?.message}
+          rightText="Opcional"
+        />
+      </Row>
+      <Row>
+        <Input
+          placeholder="Bairro"
+          {...register("district")}
+          error={errors.district?.message}
+        />
+        <Input
+          placeholder="Cidade"
+          {...register("city")}
+          error={errors.city?.message}
+        />
+        <Input 
+          placeholder="UF" 
+          {...register("uf")} 
+          error={errors.uf?.message} 
+        />
+      </Row>
     </AddressFormContainer>
   )
 }

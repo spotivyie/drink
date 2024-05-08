@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { breakpoints } from "../../styles/global"
 
 export const CompleteOrderContainer = styled.form`
   width: 100%;
@@ -7,6 +8,10 @@ export const CompleteOrderContainer = styled.form`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+
+  @media (max-width: ${breakpoints.tablet}){
+    display: block;
+  }
 `
 
 export const SectionBaseStyle = styled.div`
