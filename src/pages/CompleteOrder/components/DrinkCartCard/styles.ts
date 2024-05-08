@@ -18,21 +18,23 @@ export const DrinkCartCardContainer = styled.div`
     img {
       width: 4rem;
       height: 4rem;
+      object-fit: cover;
     }
   }
 
   > p {
     align-self: flex-start;
     font-weight: 700;
+    padding-left: 10px;
   }
-`;
+`
 
 export const ActionsContainer = styled.div`
   margin-top: 0.5rem;
   height: 2rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.5rem;
 
   > div {
     max-width: 4.5rem;

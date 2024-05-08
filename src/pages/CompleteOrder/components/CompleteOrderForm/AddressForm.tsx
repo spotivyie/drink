@@ -1,6 +1,7 @@
 import { AddressFormContainer } from "./styles"
 import { useFormContext } from "react-hook-form"
 import { Input } from "../../../../components/Input"
+import { maskCEP } from "../../../../utils/mask/inputsMask"
 
 interface ErrorsType {
   errors: {
@@ -12,17 +13,20 @@ interface ErrorsType {
 
 export function AddressForm() {
   const { register, formState } = useFormContext()
-
   const { errors } = formState as unknown as ErrorsType
-
+  
   return (
     <AddressFormContainer>
       <Input
         placeholder="CEP"
-        type="number"
+        type="tel"
         className="cep"
         {...register("cep")}
         error={errors.cep?.message}
+        onChange={(event) => {
+          const {value} = event.target
+          event.target.value = maskCEP(value)
+        }}
       />
       <Input
         placeholder="Rua"
@@ -31,8 +35,8 @@ export function AddressForm() {
         error={errors.street?.message}
       />
       <Input
-        type="number"
         placeholder="Número"
+        type="number"
         {...register("number")}
         error={errors.number?.message}
       />

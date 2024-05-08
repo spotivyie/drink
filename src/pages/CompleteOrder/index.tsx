@@ -22,6 +22,13 @@ const confirmOrderFormValidationSchema = zod.object({
   district: zod.string().min(1, "Informe o Bairro"),
   city: zod.string().min(1, "Informe a Cidade"),
   uf: zod.string().min(1, "Informe a UF"),
+  cardOwner: zod.string().min(1, "Informe o Nome do titular"),
+  cpfCardOwner: zod.string().min(1, "Informe o CPF do titular"),
+  cardDisplayName: zod.string().min(1, "Informe o Nome no Cartão"),
+  cardNumber: zod.string().min(1, "Informe o Número do Cartão"),
+  expiresMonth: zod.string().min(1, "Informe o Mês de Expiração"),
+  expiresYear: zod.string().min(1, "Informe o Ano de Expiração"),
+  cardCode: zod.string().min(1, "Informe o CVV"),
   paymentMethod: zod.nativeEnum(PaymentMethods, {
     errorMap: () => {
       return { message: "Informe o método de pagamento" }

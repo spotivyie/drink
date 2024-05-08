@@ -5,19 +5,22 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
-import InputMask from 'react-input-mask'
 
 import HeaderLogin from '../../components/HeaderLogin'
 import FooterLogin from '../../components/FooterLogin'
+import { maskCPF, maskDate, maskPhone } from '../../../../utils/mask/inputsMask'
 
 type PasswordType = 'password' | 'text'
 
 const loginFormValidationSchema = zod.object({
-    username: zod.z.string().nonempty("Digite seu nome").regex(/^[A-Za-z]+$/i, "Somente letras são permitidas"),
+    username: zod.string().nonempty("Digite seu nome")
+        .transform(username => {return username.trim().split(' ').map(word => { 
+            return word[0].toLocaleUpperCase().concat(word.substring(1))}).join(' ')}),
+            // regex(/^[A-Za-z]+$/i, "Somente letras são permitidas"),
     email: zod.string().email('Digite um e-mail válido'),
-    number: zod.number({ invalid_type_error: 'Informe o Número' }),
-    nasc: zod.number({ invalid_type_error: 'Informe a Data' }),
-    cpf: zod.number({ invalid_type_error: 'Informe o CPF' }),
+    number: zod.string().nonempty('Informe o Número'),
+    nasc: zod.string().nonempty('Informe a Data'),
+    cpf: zod.string().nonempty('Informe o CPF'),
     password: zod.string().nonempty('Digite a sua senha'),
     confirm_password: zod.string().nonempty("Confirme a senha"),
 })
@@ -25,7 +28,6 @@ const loginFormValidationSchema = zod.object({
     message: "A senha não corresponde",
     path: ["confirm_password"]
 })
-
 
 type NewLoginFormData = zod.infer<typeof loginFormValidationSchema>
 
@@ -65,114 +67,132 @@ const Cadastrar = () => {
         <HeaderLogin />
             <S.Cadastro>
                 <S.CadastroSecundary>
-                <S.MainCadastro>
-                    <S.HeaderCadastro>
-                    <h1>Cadastrar</h1>
-                    </S.HeaderCadastro>
+                    <S.MainCadastro>
+                        <S.HeaderCadastro>
+                            <h1>Cadastrar</h1>
+                        </S.HeaderCadastro>
 
-                    <form onSubmit={handleSubmit(handleLoginSubmit)}>
-                    <S.FormCadastro>
-                        <label htmlFor="name">Nome Completo</label>
-                        <input
-                        type="name"
-                        id="name"
-                        {...register('username', { required: true })}
-                        />
-                        { errors.username  && (
-                        <span > {errors.username?.message} </span>)
-                        }
-                    </S.FormCadastro>
-                    <S.FormCadastro>
-                        <label htmlFor="cpf">CPF</label>
-                        <InputMask
-                            id="cpf"
-                            type="text"
-                            name="cpf"
-                            mask="999.999.999-99"
-                        />
-                    </S.FormCadastro>
-                    <S.FormCadastro>
-                        <label htmlFor="number">Número de Telefone</label>
-                        <InputMask
-                            id="number"
-                            type="tel"
-                            name="number"
-                            mask="(99) 9999-9999"
-                        />
-                    </S.FormCadastro>
-                    <S.FormCadastro>
-                        <label htmlFor="nasc">Data de Nascimento</label>
-                        <InputMask
-                            id="nasc"
-                            type="text"
-                            name="nasc"
-                            mask="99/99/9999"
-                        />
-                    </S.FormCadastro>
-                    <S.FormCadastro>
-                        <label htmlFor="email">E-mail</label>
-                        <input
-                        type="email"
-                        id="email"
-                        {...register('email')}
-                        />
-                        { errors.email  && (
-                        <span > {errors.email?.message} </span>)
-                        }
-                    </S.FormCadastro>
-                    <S.FormCadastro>
-                        <label htmlFor="email">Digite novamente o E-mail</label>
-                        <input
-                        type="email"
-                        id="email"
-                        {...register('email')}
-                        />
-                        { errors.email  && (
-                        <span > {errors.email?.message} </span>)
-                        }
-                    </S.FormCadastro>
-                    <S.FormCadastro>
-                        <label htmlFor="password">Senha</label>
-                        <input
-                        id="password"
-                        type={inputPasswordType}
-                        {...register('password')}
-                        />
-                        <button
-                        type='button'
-                        onClick={() => handleTogglePasswordType(inputPasswordType)}
-                        >
-                        { inputPasswordType === 'password' ? <EyeSlash /> : <Eye /> }
-                        </button>
-                        { errors.password  && (
-                        <span className="text-red text-sm"> {errors.password?.message} </span>)
-                        }
-                    </S.FormCadastro>
-                    <S.FormCadastro>
-                        <label htmlFor="password">Digite novamente a senha</label>
-                        <input
-                        id="password"
-                        type={inputPasswordType}
-                        {...register('confirm_password')}
-                        />
-                        <button
-                        type='button'
-                        onClick={() => handleTogglePasswordType(inputPasswordType)}
-                        >
-                        { inputPasswordType === 'password' ? <EyeSlash /> : <Eye /> }
-                        </button>
-                        { errors.password  && (
-                        <span className="text-red text-sm"> {errors.password?.message} </span>)
-                        }
-                    </S.FormCadastro>
+                        <form onSubmit={handleSubmit(handleLoginSubmit)}>
+                            <S.FormCadastro>
+                                <label htmlFor="name">Nome Completo</label>
+                                <input
+                                    type="name"
+                                    id="name"
+                                    {...register('username', { required: true })}
+                                />
+                                    { errors.username  && (
+                                    <span > {errors.username?.message} </span>)
+                                    }
+                            </S.FormCadastro>
+                            <S.FormCadastro>
+                                <label htmlFor="cpf">CPF</label>
+                                <input
+                                    type="tel"
+                                    id="name"
+                                    {...register('cpf', { required: true })}
+                                    onChange={(event) => {
+                                        const {value} = event.target
+                                        event.target.value = maskCPF(value)
+                                    }}
+                                />
+                                    { errors.cpf  && (
+                                    <span > {errors.cpf?.message} </span>)
+                                    }
+                            </S.FormCadastro>
+                            <S.FormCadastro>
+                                <label htmlFor="number">Número de Telefone</label>
+                                <input
+                                    type="tel"
+                                    id="name"
+                                    {...register('number', { required: true })}
+                                    onChange={(event) => {
+                                        const {value} = event.target
+                                        event.target.value = maskPhone(value)
+                                    }}
+                                />
+                                    { errors.number  && (
+                                    <span > {errors.number?.message} </span>)
+                                    }
+                            </S.FormCadastro>
+                            <S.FormCadastro>
+                                <label htmlFor="nasc">Data de Nascimento</label>
+                                <input
+                                    type="tel"
+                                    id="name"
+                                    {...register('nasc', { required: true })}
+                                    onChange={(event) => {
+                                        const {value} = event.target
+                                        event.target.value = maskDate(value)
+                                    }}
+                                />
+                                    { errors.nasc  && (
+                                    <span > {errors.nasc?.message} </span>)
+                                    }
+                            </S.FormCadastro>
+                            <S.FormCadastro>
+                                <label htmlFor="email">E-mail</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    {...register('email')}
+                                />
+                                    { errors.email  && (
+                                    <span > {errors.email?.message} </span>)
+                                    }
+                            </S.FormCadastro>
+                            <S.FormCadastro>
+                                <label htmlFor="email">Digite novamente o E-mail</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    {...register('email')}
+                                />
+                                    { errors.email  && (
+                                    <span > {errors.email?.message} </span>)
+                                    }
+                            </S.FormCadastro>
+                            <S.FormCadastro>
+                                <label htmlFor="password">Senha</label>
+                                <input
+                                    id="password"
+                                    type={inputPasswordType}
+                                    {...register('password')}
+                                />
+                                <button
+                                    type='button'
+                                    onClick={() => handleTogglePasswordType(inputPasswordType)}
+                                >
+                                    { inputPasswordType === 'password' ? <EyeSlash /> : <Eye /> }
+                                </button>
+                                    { errors.password  && (
+                                    <span className="text-red text-sm"> {errors.password?.message} </span>)
+                                    }
+                            </S.FormCadastro>
+                            <S.FormCadastro>
+                                <label htmlFor="password">Digite novamente a senha</label>
+                                <input
+                                    id="password"
+                                    type={inputPasswordType}
+                                    {...register('confirm_password')}
+                                />
+                                <button
+                                    type='button'
+                                    onClick={() => handleTogglePasswordType(inputPasswordType)}
+                                >
+                                    { inputPasswordType === 'password' ? <EyeSlash /> : <Eye /> }
+                                </button>
+                                    { errors.password  && (
+                                    <span className="text-red text-sm"> {errors.password?.message} </span>)
+                                    }
+                            </S.FormCadastro>
 
-                    <S.FooterCadastro>
-                        <button type="submit">
-                        Cadastrar
-                        </button>
-                    </S.FooterCadastro>
-                    </form>
-                </S.MainCadastro>
+                            <S.FooterCadastro>
+                                <button type="submit" onSubmit={handleSubmit(handleLoginSubmit)}>
+                                    Cadastrar
+                                </button>
+                            </S.FooterCadastro>
+                        </form>
+                    </S.MainCadastro>
                 </S.CadastroSecundary>
             </S.Cadastro>
         <FooterLogin />

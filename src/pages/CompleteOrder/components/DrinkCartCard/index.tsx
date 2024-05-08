@@ -50,7 +50,7 @@ export function DrinkCartCard({ drink }: DrinkCartCardProps) {
         </div>
       </div>
 
-      <p>R$ {formattedPrice}</p>
+      <p>R${formattedPrice}</p>
     </S.DrinkCartCardContainer>
   )
 }
