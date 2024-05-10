@@ -56,6 +56,7 @@ export const HeaderButton = styled.button`
     top: calc(-1.25rem / 2);
     right: calc(-1.25rem / 2);
     color: ${({ theme }) => theme.colors["white"]};
+    background: ${({ theme }) => theme.colors["green"]};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,13 +64,9 @@ export const HeaderButton = styled.button`
     font-weight: 700;
   }
 
-  font-size: ${({ theme }) => theme.textSizes["text-regular-s"]};
-  background: ${({ theme }) => theme.colors["base-card"]};
-  color: ${({ theme }) => theme.colors["black"]};
-
-  span {
-    background: ${({ theme }) => theme.colors["green"]};
-  }
+  // font-size: ${({ theme }) => theme.textSizes["text-regular-s"]};
+  // background: ${({ theme }) => theme.colors["base-card"]};
+  // color: ${({ theme }) => theme.colors["black"]};
 `
 
 export const Login = styled.div`

@@ -13,13 +13,10 @@ export const DrinkList = styled.div`
 
     @media (max-width: ${breakpoints.tablet}){
         grid-template-columns: repeat(2, 1fr);
-        column-gap: 2.0rem;
-        row-gap: 2.0rem;
     }
     
     @media (max-width: ${breakpoints.phone}){
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 0rem;
-        row-gap: 0rem;
+        grid-gap: 6px;
+        row-gap: 6px;
     }
 `

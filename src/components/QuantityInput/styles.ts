@@ -21,21 +21,26 @@ export const QuantityInputContainer = styled.div<QuantityInputContainerProps>`
     &:focus {
       outline: none;
     }
-
-    @media (max-width: ${breakpoints.phone}) {
-    }
   }
 
   ${({ size }) =>
     size === "medium" &&
     css`
       padding: 0.5rem;
+
+      @media (max-width: ${breakpoints.phone}) {
+        padding: 0rem;
+      }
     `}
 
   ${({ size }) =>
     size === "small" &&
     css`
       padding: 0.3rem 0.5rem;
+
+      @media (max-width: ${breakpoints.phone}) {
+        padding: 0rem;
+      }
     `}
 `
 

@@ -15,7 +15,7 @@ export const OurDrinksContainer = styled.section`
   }
 
   @media (max-width: ${breakpoints.phone}){
-    padding: 100px 0px;
+    padding: 40px 0px;
   }
 `
 
@@ -33,6 +33,6 @@ export const VendidosBar = styled.div`
   }
 
   @media (max-width: ${breakpoints.phone}){
-    padding-top: 0rem;
+    padding: 40px 12px;
   }
 `

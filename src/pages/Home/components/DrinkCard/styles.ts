@@ -38,7 +38,7 @@ export const Name = styled.div`
   }
 
   @media (max-width: ${breakpoints.phone}){
-    padding: 0px 0px;
+    padding: 20px 0px;
   }
 `
 
@@ -49,8 +49,8 @@ export const AddCartWrapper = styled.div`
   margin: 20px;
 
   @media (max-width: ${breakpoints.phone}) {
-    display: block;
-    margin-top: 10px;
+    margin: 20px 14px;
+    align-items: center;
   }
 `
 
@@ -60,6 +60,10 @@ export const Descricao = styled.p`
   font-size: 16px;
   font-weight: bold;
   margin-top: 10px;
+
+  @media (max-width: ${breakpoints.phone}) {
+    margin-top: 30px;
+  }
 `
 
 export const Button = styled.button`
@@ -74,5 +78,9 @@ export const Button = styled.button`
 
   h1 {
     font-size: 14px;
+  }
+
+  @media (max-width: ${breakpoints.phone}) {
+    margin-right: 0px;
   }
 `

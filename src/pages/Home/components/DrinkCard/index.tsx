@@ -45,10 +45,8 @@ export const DrinkCard = ({ drinks }: DrinksProps) => {
       <S.Name>{drinks.name}</S.Name>
 
       <S.Descricao>
-        <RegularText size="s">R$</RegularText>
-        <p>
-          {formattedPrice}
-        </p>
+        <RegularText>R$</RegularText>
+        <p>{formattedPrice}</p>
       </S.Descricao>
 
       <S.AddCartWrapper>

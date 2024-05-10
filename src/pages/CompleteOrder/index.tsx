@@ -11,7 +11,7 @@ import Category from "../../components/Category"
 
 enum PaymentMethods {
   credit = "credit",
-  debit = "debit"
+  debit = "debit",
 }
 
 const confirmOrderFormValidationSchema = zod.object({

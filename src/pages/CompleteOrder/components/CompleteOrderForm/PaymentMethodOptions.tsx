@@ -1,5 +1,5 @@
 import { PaymentMethodOptionsContainer } from "./styles"
-import { CreditCard, Bank } from "phosphor-react"
+import { CreditCard, Bank,  } from "phosphor-react"
 import { PaymentMethodInput } from "../PaymentMethodInput"
 import { useFormContext } from "react-hook-form"
 import { RegularText } from "../../../../components/Typography"

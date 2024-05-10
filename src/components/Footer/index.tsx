@@ -1,3 +1,4 @@
+import { CreditCard, FacebookLogo, InstagramLogo, Laptop, Phone } from 'phosphor-react'
 import * as S from './styles'
 
 export function Footer () {
@@ -6,22 +7,43 @@ export function Footer () {
             <S.FooterRedes>
                 <S.AtendimentoRede>
                 <S.Rede>
-                    <p>atendimento</p>
-                    <p>telefone</p>
-                    <p>email</p>
+                    <div>
+                        <Phone size={32} />
+                        <h1>Atendimento</h1>
+                    </div>
+                    <p>Segunda a sexta: 8h às 18h30</p>
+                    <p>atendimento@atendimento.com</p>
+                    <p>(99) 99999-9999</p>
+                    <p>Localizado no estado, cidade,<br/>bairro, numero</p>
                 </S.Rede>
                 <S.Rede>
-                    <p>rede social</p>
-                    <p>instagram</p>
+                    <div>
+                        <CreditCard size={32} />
+                        <h1>Formas de pagamento</h1>
+                    </div>
+                        <p>cartão de crédito</p>
+                        <p>cartão de débito</p>
+                        <p>pix</p>
                 </S.Rede>
                 <S.Rede>
-                    <p>pagamentos</p>
+                    <div>
+                        <Laptop size={32} />
+                        <h1>Redes social</h1>
+                    </div>
+                    <S.Image>
+                        <div>
+                            <InstagramLogo size={32} />
+                        </div>
+                        <div>
+                            <FacebookLogo size={32} />
+                        </div>
+                    </S.Image>
                 </S.Rede>
                 </S.AtendimentoRede>
             </S.FooterRedes>
-            <span></span>
+                <span></span>
                 <S.Vindo>
-                <p>Copyright© 2024 LOGO - Todos os direitos reservados</p>
+                    <p>Copyright© 2024 LOGO - Todos os direitos reservados</p>
                 </S.Vindo>
         </S.Footer>
     )
