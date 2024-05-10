@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { breakpoints } from "../../styles/global"
 
 export interface QuantityInputContainerProps {
   size: "medium" | "small"
@@ -7,7 +8,7 @@ export interface QuantityInputContainerProps {
 export const QuantityInputContainer = styled.div<QuantityInputContainerProps>`
   align-items: center;
   border-radius: 6px;
-  padding: 8px;
+  
   display: flex;
 
   input {
@@ -19,6 +20,9 @@ export const QuantityInputContainer = styled.div<QuantityInputContainerProps>`
 
     &:focus {
       outline: none;
+    }
+
+    @media (max-width: ${breakpoints.phone}) {
     }
   }
 

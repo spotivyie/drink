@@ -11,6 +11,7 @@ export const CompleteOrderContainer = styled.form`
 
   @media (max-width: ${breakpoints.tablet}){
     display: block;
+    align-items: center;
   }
 `
 
@@ -18,4 +19,8 @@ export const SectionBaseStyle = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.colors["base-card"]};
   padding: 2.5rem;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 80%;
+  }
 `

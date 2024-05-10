@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { breakpoints } from "../../styles/global"
 
 export const InputWrapper = styled.div`
   display: flex;
@@ -8,6 +9,10 @@ export const InputWrapper = styled.div`
 
   > p {
     color: ${({ theme }) => theme.colors["base-error"]};
+  }
+
+  @media (max-width: ${breakpoints.tablet}){
+    padding-bottom: 16px;
   }
 `
 

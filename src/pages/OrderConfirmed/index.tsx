@@ -35,53 +35,78 @@ export function OrderConfirmedPage() {
       <Header />
       <Category />
         <OrderConfirmedContainer className="container">
-        <div>
-          <TitleText size="l">Pedido confirmado !</TitleText>
-          <RegularText size="l" color="subtitle">
-            Agora é só aguardar que logo a bebida chegará até você.
-          </RegularText>
-        </div>
-
-        <section>
           <OrderDetailsContainer>
-            <InfoWithIcon
-              icon={<MapPin weight="fill" />}
-              iconBg={colors["black"]}
-              text={
-                <RegularText>
-                  Entrega em <strong>{state.street}</strong>, {state.number}
-                  <br />
-                  {state.district} - {state.city}, {state.uf}
-                </RegularText>
-              }
-            />
+          <div>
+            <TitleText size="l">Pedido confirmado !</TitleText>
+            <RegularText size="l" color="subtitle">
+              Agora é só aguardar que logo a bebida chegará até você.
+            </RegularText>
+          </div>
 
-            <InfoWithIcon
-              icon={<Clock weight="fill" />}
-              iconBg={colors["brand-yellow"]}
-              text={
-                <RegularText>
-                  Previsão de entrega
-                  <br />
-                  até <strong>13 dias</strong>
-                </RegularText>
-              }
-            />
+          <section>
+            <div>
+              <InfoWithIcon
+                icon={<MapPin weight="fill" />}
+                iconBg={colors["black"]}
+                text={
+                  <RegularText>
+                    Entrega em <strong>{state.street}</strong>, {state.number}
+                    <br />
+                    {state.district} - {state.city}, {state.uf}
+                  </RegularText>
+                }
+              />
+            </div>
 
-            <InfoWithIcon
-              icon={<CurrencyDollar weight="fill" />}
-              iconBg={colors["green"]}
-              text={
-                <RegularText>
-                  Pagamento realizado
-                  <br />
-                  <strong>{paymentMethods[state.paymentMethod].label}</strong>
-                </RegularText>
-              }
-            />
+            <div>
+              <InfoWithIcon
+                icon={<Clock weight="fill" />}
+                iconBg={colors["brand-yellow"]}
+                text={
+                  <RegularText>
+                    Previsão de entrega
+                    <br />
+                    até <strong>13 dias</strong>
+                  </RegularText>
+                }
+              />
+            </div>
+
+            <div>
+              <InfoWithIcon
+                icon={<CurrencyDollar weight="fill" />}
+                iconBg={colors["green"]}
+                text={
+                  <RegularText>
+                    Pagamento realizado
+                    <br />
+                    <strong>{paymentMethods[state.paymentMethod].label}</strong>
+                  </RegularText>
+                }
+              />
+            </div>
+          </section>
+            <div>
+              <p>
+                Se você optou pelo pagamento com cartão de crédito, a liberação do
+                código de ativação ocorrerá após a aprovação da transação pela
+                operadora do cartão. Você receberá o código no e-mail cadastrado
+                em nossa loja.
+              </p>
+              <br/>
+              <p>
+                Pedimos que verifique sua caixa de entrada e a pasta de spam para
+                garantir que receba nossa comunicação. Caso tenha alguma dúvida ou
+                necessite de mais informações, por favor, entre em contato conosco
+                através dos nossos canais de atendimento ao cliente
+              </p>
+              <br/>
+              <p>
+                Agradecemos por escolher a LOGO e esperamos que desfrute da sua 
+                bebida!
+              </p>
+            </div>
           </OrderDetailsContainer>
-          <img src={confirmedOrderIllustration} />
-        </section>
       </OrderConfirmedContainer>
     </div>
   )

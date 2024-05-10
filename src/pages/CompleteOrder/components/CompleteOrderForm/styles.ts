@@ -9,6 +9,11 @@ export const CompleteOrderFormContainer = styled.div`
   width: 40rem;
 
   @media (max-width: ${breakpoints.tablet}){
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.phone}){
     width: 100%;
   }
 `
@@ -38,44 +43,42 @@ export const PaymentMethodOptionsContainer = styled.div`
     grid-column: span 3;
     color: ${({ theme }) => theme.colors["base-error"]};
   }
-
+  
   @media (max-width: ${breakpoints.tablet}){
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: ${breakpoints.phone}){
     display: block;
   }
-`
+  `
 
 export const Row = styled.div`
-width: 100%;
-display: grid;
-grid-template-columns: 12.5rem 17.25rem 3.75rem;
-column-gap: 0.75rem;
-row-gap: 1rem;
-grid-auto-flow: dense;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 12.5rem 17.25rem 3.75rem;
+  column-gap: 0.75rem;
+  row-gap: 1rem;
+  grid-auto-flow: dense;
 
-.cep {
-  grid-column: span 3;
-  max-width: 12.5rem;
-}
+  .cep {
+    grid-column: span 3;
+    max-width: 12.5rem;
+  }
 
-.street {
-  grid-column: span 3;
-}
+  .street {
+    grid-column: span 3;
+  }
 
-.complement {
-  grid-column: span 2;
-}
+  .complement {
+    grid-column: span 2;
+  }
 
-    @media (max-width: ${breakpoints.tablet}) {
-        column-gap: 14px;
-        padding-bottom: 16px;
-        display: block;
-        grid-template-colums: 2fr;
+  @media (max-width: ${breakpoints.tablet}) {
+    display: block;
 
-        .cep {
-          max-width: 100%;
-        }
-
-        // display: flex;
-        // flex-direction: column;
+    .cep {
+      max-width: 100%;
     }
+  }
 `

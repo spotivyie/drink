@@ -10,4 +10,8 @@ export const Vodka = styled.div`
     @media (max-width: ${breakpoints.tablet}){
         padding: 40px 20px 100px 20px;
     }
+
+    @media (max-width: ${breakpoints.phone}){
+        padding: 40px 12px;
+    }
 `

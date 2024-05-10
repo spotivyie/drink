@@ -30,11 +30,31 @@ export const DrinkCartCardContainer = styled.div`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
+    >p {
+      text-align: end;
+    }
+  }
+
+  @media (max-width: ${breakpoints.phone}) {
     display: block;
+    align-items: center;
+    text-align: center;
+
+    > div {
+      display: block;
+      align-items: center;
+      gap: 1.25rem;
+  
+      img {
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 20px;
+      }
+    }
 
     >p {
-      padding: 20px 24px 20px 0px;
-      text-align: end;
+      text-align: center;
+      padding-top: 20px;
     }
   }
 `
@@ -49,6 +69,11 @@ export const ActionsContainer = styled.div`
   > div {
     max-width: 4.5rem;
     height: 100%;
+  }
+
+  @media (max-width: ${breakpoints.phone}) {
+    justify-content: center;
+    margin-top: 10px;
   }
 `
 

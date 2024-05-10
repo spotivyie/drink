@@ -10,7 +10,8 @@ export const SelectedDrinksContainer = styled.div`
 
   @media (max-width: ${breakpoints.tablet}) {
     width: 100%;
-    padding-top: 40px;
+    padding-top: 60px;
+    align-items: center;
   }
 `
 

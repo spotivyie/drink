@@ -19,6 +19,12 @@ export const Card = styled.div`
     padding: 0px 18px;
     margin-top: 10px;
   }
+
+  @media (max-width: ${breakpoints.phone}){
+    img{
+      padding: 0px;
+    }
+  }
 `
 
 export const Name = styled.div`
@@ -41,6 +47,11 @@ export const AddCartWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 20px;
+
+  @media (max-width: ${breakpoints.phone}) {
+    display: block;
+    margin-top: 10px;
+  }
 `
 
 export const Descricao = styled.p`

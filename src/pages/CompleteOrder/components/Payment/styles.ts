@@ -8,17 +8,29 @@ export const Row = styled.div`
 
     @media (max-width: ${breakpoints.tablet}) {
         display: block;
-        grid-template-colums: 2fr;
-
-        // display: flex;
-        // flex-direction: column;
     }
 `
 
 export const InputGroup = styled.div`
     flex: auto;
 
-    @media (max-width: ${breakpoints.tablet}) {
-        margin-top: 16px;
+    label {
+        font-size: 16px;
+        margin: 18px 0;
+        display: block;
+        font-weight: 400;
+    }
+
+    select {
+        width: 24%;
+        padding: 10px;
+        border: 1px solid ${({ theme }) => theme.colors["base-button"]};
+        background: ${({ theme }) => theme.colors["base-input"]};
+    }
+
+    @media (max-width: ${breakpoints.phone}) {
+        select {
+            width: 60%;
+        }
     }
 `

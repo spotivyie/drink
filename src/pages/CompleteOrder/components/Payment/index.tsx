@@ -2,6 +2,9 @@ import * as S from './styles'
 import { useFormContext } from 'react-hook-form'
 import { Input } from '../../../../components/Input'
 import { maskCPF, maskCardNumber, maskCVV, maskExpire } from '../../../../utils/mask/inputsMask'
+import { useCart } from '../../../../hooks/useCart'
+import { useEffect, useState } from 'react'
+import { formatMoney } from '../../../../utils/formatMoney'
 
 interface ErrorsType {
     errors: {
@@ -11,9 +14,42 @@ interface ErrorsType {
     }
 }
 
+type Installment = {
+    quantity: number
+    amount: string
+    formattedAmount: string
+}
+
 export function Payment() {
     const { register, formState } = useFormContext()
     const { errors } = formState as unknown as ErrorsType
+    const [installments, setInstallments] = useState<Installment[]>([])
+    
+    const { cartItemsTotal, cartQuantity } = useCart()
+    const DELIVERY_PRICE = 13.5
+
+    const cartTotal = DELIVERY_PRICE + cartItemsTotal
+    
+    useEffect(() => {
+        const calculateInstallments = () => {
+            const installmentsArray: Installment[] = []
+        
+            for (let i = 1; i <= 6; i++) {
+                installmentsArray.push({
+                quantity: i,
+                amount: formatMoney(cartTotal / i),
+                formattedAmount: formatMoney(cartTotal / i),
+                })
+            }
+        
+            return installmentsArray
+            }
+        
+            if (cartTotal > 0) {
+                setInstallments(calculateInstallments())
+            }
+        }, [cartTotal])
+    
 
     return (
         <>
@@ -64,8 +100,8 @@ export function Payment() {
                         }}
                     />
                 </S.InputGroup>
-                </S.Row>
-                <S.Row>
+            </S.Row>
+            <S.Row>
                 <S.InputGroup>
                     <Input
                         placeholder="Mês de expiração"
@@ -104,6 +140,21 @@ export function Payment() {
                             event.target.value = maskCVV(value)
                         }}
                     />
+                </S.InputGroup>
+            </S.Row>
+            <S.Row>
+                <S.InputGroup>
+                    <label htmlFor="installments">Parcelamento</label>
+                    <select name="installments" id="installments">
+                        {installments.map((installment) => (
+                            <option  
+                                value={installment.quantity}
+                                key={installment.quantity}>
+                                    {installment.quantity}x de{' '}
+                                    {installment.formattedAmount}
+                            </option>
+                        ))}
+                    </select>
                 </S.InputGroup>
             </S.Row>
         </>
