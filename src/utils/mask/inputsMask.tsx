@@ -1,25 +1,16 @@
 export function maskCardNumber (value: string) {
-    return value.replace(/\s/g, "").match(/.{1,4}/g)?.join(" ").substr(0, 19) || ""
+    const noMask = value.replace(/\D/g, '')
+    return noMask.replace(/\s/g, "").match(/.{1,4}/g)?.join(" ").substr(0, 19) || ""
 }
 
 export function maskExpire (value: string) {
     const noMask = value.replace(/\D/g, '')
-    const { length } = noMask
-
-    if (length <= 2) {
-        return noMask.replace(/^(\d{2})$/, "$1")
-    }
-    return value
+    return noMask.replace(/^(\d{2})$/, "$1").substr(0, 2)
 }
 
 export function maskCVV (value: string) {
     const noMask = value.replace(/\D/g, '')
-    const { length } = noMask
-
-    if (length <= 2) {
-        return noMask.replace(/^(\d{3})$/, "$1")
-    }
-    return value
+    return noMask.replace(/^(\d{3})$/, "$1").substr(0, 3)
 }
 
 export function maskPhone (value: string) {
@@ -37,8 +28,8 @@ export function maskDate (value: string) {
     const noMask = value.replace(/\D/g, '')
     const { length } = noMask
 
-    if (length <= 8) {
-        return noMask.replace(/^(\d{2})(\d{2})(\d{4})$/, "$1/$2/$3")
+    if (length <= 10) {
+        return noMask.replace(/^(\d{2})(\d{2})(\d{4})$/, "$1/$2/$3").substr(0, 10)
     }
     return value
 }
@@ -47,7 +38,7 @@ export function maskCPF (value: string) {
     const noMask = value.replace(/\D/g, '')
     const { length } = noMask
 
-    if (length <= 11) {
+    if (length <= 15) {
         return noMask.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4")
     }
     return value
@@ -62,8 +53,8 @@ export function maskCEP (value: string) {
     const noMask = value.replace(/\D/g, '')
     const { length } = noMask
 
-    if (length <= 8) {
-        return noMask.replace(/(\d{5})(\d)/, '$1-$2')
+    if (length <= 9) {
+        return noMask.replace(/(\d{5})(\d)/, '$1-$2').substr(0, 9)
     }
     return value
 }

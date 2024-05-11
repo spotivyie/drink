@@ -23,6 +23,7 @@ export function Footer () {
                     </div>
                         <p>cartão de crédito</p>
                         <p>cartão de débito</p>
+                        <p>boleto</p>
                         <p>pix</p>
                 </S.Rede>
                 <S.Rede>
