@@ -2,11 +2,10 @@ import { DrinkCard, Menu } from "../DrinkCard"
 import { DrinkList } from "./styles"
 
 export type Props = {
-        menu: Menu[]
-    }
+    menu: Menu[]
+}
 
 export const Product = ({ menu }: Props) => {
-
 
     return (
     <DrinkList>
